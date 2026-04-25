@@ -75,3 +75,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7058151877eea50449efd562c7b4a531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectInstaller
+  _playerColorDictionary:
+    _serializedList:
+    - Key: 0
+      Value:
+        CellMaterial: {fileID: 2100000, guid: 551422431f928bd49a853547ac289c11, type: 2}
+        Color: {r: 0.5921569, g: 0.5921569, b: 0.5921569, a: 1}
+    - Key: 1
+      Value:
+        CellMaterial: {fileID: 2100000, guid: fa49f5a03623ef94cbf56d5dd7cac54f, type: 2}
+        Color: {r: 0, g: 0, b: 1, a: 1}
+    - Key: 2
+      Value:
+        CellMaterial: {fileID: 2100000, guid: f3cc89ab721e2e94b8c249a2127cc318, type: 2}
+        Color: {r: 0, g: 1, b: 1, a: 1}
+    - Key: 3
+      Value:
+        CellMaterial: {fileID: 2100000, guid: 482a6f740151448428479b558f445671, type: 2}
+        Color: {r: 1, g: 1, b: 0, a: 1}
+    - Key: 4
+      Value:
+        CellMaterial: {fileID: 2100000, guid: 9589b3bca68778c42a90a997e1efb110, type: 2}
+        Color: {r: 0, g: 1, b: 0, a: 1}
+    - Key: 5
+      Value:
+        CellMaterial: {fileID: 2100000, guid: 659c26c7e136eb84aa2f8dc42f2c39eb, type: 2}
+        Color: {r: 1, g: 0.7529412, b: 0.79607844, a: 1}
+    - Key: 6
+      Value:
+        CellMaterial: {fileID: 2100000, guid: aa8b5fb33b3715f47abe5e70357143a0, type: 2}
+        Color: {r: 0.5019608, g: 0, b: 0.5019608, a: 1}
+    - Key: 7
+      Value:
+        CellMaterial: {fileID: 2100000, guid: 941592cc182d0e74a9e6a6256d7bc816, type: 2}
+        Color: {r: 0, g: 0.5019608, b: 0, a: 1}
+    - Key: 8
+      Value:
+        CellMaterial: {fileID: 2100000, guid: 3a3f79436825fe94f8911cde37795966, type: 2}
+        Color: {r: 1, g: 0, b: 0, a: 1}

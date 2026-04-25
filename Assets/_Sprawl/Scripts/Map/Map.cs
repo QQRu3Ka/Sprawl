@@ -15,10 +15,10 @@ public class Map : MonoBehaviour
     private void Awake()
     {
         _tiles = GetComponentsInChildren<Tile>().ToDictionary(tile => tile.Position);
-        _tiles.Values.ToList().ForEach(tile => tile.OnFullPainted += OnTileFullPainted);
+        _tiles.Values.ToList().ForEach(tile => tile.OnFullPainted += OnFullPaintedEventListener);
     }
 
-    private void OnTileFullPainted(Tile tile)
+    private void OnFullPaintedEventListener(Tile tile)
     {
         if (_tiles.Values.Where(tile => tile.Color != PlayerColor.NONE).Select(tile => tile.Color).ToHashSet().Count > 1)
         {
@@ -34,10 +34,10 @@ public class Map : MonoBehaviour
         List<Tile> tiles = new();
         var neighbors = new (bool has, Vector2Int offset)[]
         {
-            (tile.HasNorthNeighbor, Vector2Int.right),
-            (tile.HasWestNeighbor,  Vector2Int.down),
-            (tile.HasEastNeighbor,  Vector2Int.up),
-            (tile.HasSouthNeighbor, Vector2Int.left)
+            (tile.HasNorthNeighbor, Vector2Int.up),
+            (tile.HasWestNeighbor,  Vector2Int.left),
+            (tile.HasEastNeighbor,  Vector2Int.right),
+            (tile.HasSouthNeighbor, Vector2Int.down)
         };
         var coords = tile.Position;
         foreach (var (hasNeighbor, offset) in neighbors)
@@ -48,5 +48,10 @@ public class Map : MonoBehaviour
             }
         }
         return tiles;
+    }
+
+    private void OnDestroy()
+    {
+        _tiles.Values.ToList().ForEach(tile => tile.OnFullPainted -= OnFullPaintedEventListener);
     }
 }

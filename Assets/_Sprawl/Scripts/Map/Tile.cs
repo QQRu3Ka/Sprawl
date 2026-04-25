@@ -23,6 +23,7 @@ public class Tile : MonoBehaviour
     private int _paintedCells;
     private PlayerColor _color;
     private Animator _animator;
+    private bool _isSpreading;
 
     public Vector2Int Position => _position;
     public bool HasNorthNeighbor => _hasNorthNeighbor;
@@ -41,11 +42,11 @@ public class Tile : MonoBehaviour
         _animator = GetComponent<Animator>();
         foreach (var cell in _cells)
         {
-            cell.OnPressed += OnCellPressed;
-            cell.OnPainted += OnCellPainted;
+            cell.OnPressed += OnPressedEventListener;
+            cell.OnPainted += OnPaintedEventListener;
         }
     }
-    private bool OnCellPressed(PlayerColor color)
+    private bool OnPressedEventListener(PlayerColor color)
     {
         if ((_color == PlayerColor.NONE || _color == color) && !_inputBlocker.IsBlocked)
         {
@@ -54,7 +55,7 @@ public class Tile : MonoBehaviour
         return false;
     }
 
-    private async void OnCellPainted(PlayerColor color)
+    private async void OnPaintedEventListener(PlayerColor color)
     {
         _paintedCells++;
         _color = color;
@@ -65,6 +66,7 @@ public class Tile : MonoBehaviour
     {
         if (_paintedCells >= _cells.Count)
         {
+            _isSpreading = true;
             _cells.ForEach(cell => cell.Clean());
             _paintedCells = 0;
 
@@ -74,20 +76,32 @@ public class Tile : MonoBehaviour
 
             OnFullPainted?.Invoke(this);
             _color = PlayerColor.NONE;
+            _isSpreading = false;
         }
     }
 
     private async UniTask PlaySpreadAnimation()
     {
-        _animatedCells.ForEach(cell => cell.SetColor(_color));
+        _animatedCells.ForEach(cell => cell.RepaintWith(_color));
         _animator.SetTrigger("Spread");
         await UniTask.Delay(1000);
     }
 
     public void RepaintAfterSpreadWith(PlayerColor color)
     {
-        _cells.Where(cell => cell.IsPainted).ToList().ForEach(cell => cell.SetColorOnSpread(color));
+        //Проверка, чтобы у плитки не было доп. закрашиваний
+        if (_isSpreading) return;
+        _cells.Where(cell => cell.IsPainted).ToList().ForEach(cell => cell.RepaintSilentlyWith(color));
         var freeCells = _cells.Where(cell => !cell.IsPainted).ToList();
-        freeCells[Random.Range(0, freeCells.Count)].SetColor(color);
+        freeCells[Random.Range(0, freeCells.Count)].PaintWith(color);
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var cell in _cells)
+        {
+            cell.OnPressed -= OnPressedEventListener;
+            cell.OnPainted -= OnPaintedEventListener;
+        }
     }
 }

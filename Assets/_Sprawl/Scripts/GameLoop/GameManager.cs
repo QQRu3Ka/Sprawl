@@ -2,17 +2,9 @@ using System;
 using UnityEngine;
 using Zenject;
 
-public class GameManager : IInitializable
+public class GameManager : IInitializable, IDisposable
 {
     [Inject] private TurnController _turnController;
-
-    private bool _isInProgress;
-
-    public bool IsInProgress
-    {
-        get => _isInProgress;
-        set => _isInProgress = value;
-    }
 
     public void Initialize()
     {
@@ -22,6 +14,10 @@ public class GameManager : IInitializable
     private void EndGame(PlayerColor color)
     {
         Debug.Log("Игра окончена");
-        _isInProgress = false;
+    }
+
+    public void Dispose()
+    {
+        _turnController.OnOnePlayerLeft -= EndGame;
     }
 }

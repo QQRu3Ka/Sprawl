@@ -5,7 +5,6 @@ using Zenject;
 public class PlayerTileService
 {
     [Inject] private Map _map;
-    [Inject] private PlayerRegistry _playerRegistry;
 
     public int GetTileAmount(Player player)
     {
