@@ -9,7 +9,7 @@ using Zenject;
 public class Cell : MonoBehaviour, IPointerDownHandler
 {
     [Inject] private PlayerColorConfigProvider _playerColorConfigProvider;
-    [Inject] private CellClickHandler _cellClickHandler;
+    [Inject] private PlayerClickValidator _playerClickValidator;
 
     [SerializeField] private MeshRenderer _meshRenderer;
 
@@ -26,7 +26,7 @@ public class Cell : MonoBehaviour, IPointerDownHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            await _cellClickHandler.HandleClick(this);
+            await _playerClickValidator.ValidateClickOn(this);
         }
     }
 

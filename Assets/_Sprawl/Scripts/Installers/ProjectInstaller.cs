@@ -10,5 +10,7 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<PlayerRegistry>().AsSingle();
         Container.Bind<Player>().AsTransient();
         Container.Bind<PlayerColorConfigProvider>().AsSingle().WithArguments(_playerColorDictionary);
+
+        Container.Bind<SelectedMapHolder>().AsSingle();
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-    [SerializeField] private Dictionary<Vector2Int, Tile> _tiles;
+    private Dictionary<Vector2Int, Tile> _tiles;
 
     public List<Tile> Tiles
     {
@@ -20,7 +20,8 @@ public class Map : MonoBehaviour
 
     private void OnFullPaintedEventListener(Tile tile)
     {
-        if (_tiles.Values.Where(tile => tile.Color != PlayerColor.NONE).Select(tile => tile.Color).ToHashSet().Count > 1)
+        //Защита от бесконечной анимации
+        if (_tiles.Values.Select(t => t.Color).Where(color => color != PlayerColor.NONE).Distinct().Skip(1).Any())
         {
             foreach (var neighborTile in GetNearbyTilesOf(tile))
             {

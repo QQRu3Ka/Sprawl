@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a078c3e13742c3643bf41af1b285ddd4, type: 3}
+  m_Name: MapCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::MapCatalogSO
+  Prefabs:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 3955614550391119805, guid: df0b0343c2932094db338ec19bb3b62c, type: 3}
+    - Key: 1
+      Value: {fileID: 4914581143894523942, guid: 558c957e58dafb84c81a1990c5f7479b, type: 3}

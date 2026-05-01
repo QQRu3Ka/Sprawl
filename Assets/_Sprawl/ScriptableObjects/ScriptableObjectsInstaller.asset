@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ScriptableObjectsInstaller
   m_EditorClassIdentifier: Assembly-CSharp::ScriptableObjectsInstaller
   _gameConfig: {fileID: 11400000, guid: 992c066e14f50a84e82db9437af7e018, type: 2}
+  _mapCatalog: {fileID: 11400000, guid: 81388c0d4f7b5e743b519d182f446c88, type: 2}
