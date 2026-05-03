@@ -63,7 +63,7 @@ public class TurnOrder
 
         if(activePlayers.Count == 1)
         {
-            winner = activePlayers[1];
+            winner = activePlayers[0];
             return true;
         }
 

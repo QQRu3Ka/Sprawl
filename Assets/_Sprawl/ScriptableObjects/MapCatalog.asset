@@ -12,9 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a078c3e13742c3643bf41af1b285ddd4, type: 3}
   m_Name: MapCatalog
   m_EditorClassIdentifier: Assembly-CSharp::MapCatalogSO
-  Prefabs:
+  Data:
     _serializedList:
     - Key: 0
-      Value: {fileID: 3955614550391119805, guid: df0b0343c2932094db338ec19bb3b62c, type: 3}
+      Value:
+        Map: {fileID: 6067787044760417175, guid: 7471307218d8ac844aa025c914beb0ef, type: 3}
+        Name: 4x4
     - Key: 1
-      Value: {fileID: 4914581143894523942, guid: 558c957e58dafb84c81a1990c5f7479b, type: 3}
+      Value:
+        Map: {fileID: 8956994257131824067, guid: 95c21cd8edd01e641abd9ccc41a1e714, type: 3}
+        Name: 5x5
+    - Key: 2
+      Value:
+        Map: {fileID: 8217660860041696073, guid: 8c1dd87e0da1d0a4582a3ee33c9071a7, type: 3}
+        Name: 6x6

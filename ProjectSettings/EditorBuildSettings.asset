@@ -12,5 +12,5 @@ EditorBuildSettings:
     path: Assets/_Sprawl/Scenes/GameScene.unity
     guid: 83a0ccc267db1df4589d80938654b7b8
   m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 6c6a6387809b65a4fb2c883a7e4c6bbc, type: 3}
   m_UseUCBPForAssetBundles: 0
